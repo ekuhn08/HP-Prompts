@@ -1,0 +1,203 @@
+html, body {
+position: relative;
+  min-height: 100vh;
+}
+
+
+
+.hogwarts-wrapper {
+  position: fixed; /* Covers the whole screen */
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.hogwarts-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+.potter-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  /* ensure the prompt overlays the image */
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 100px;
+  z-index: 1;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -100% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.potter-prompt {
+  background: radial-gradient(circle, #7f0909 0%, #ffcc00 100%);
+  border-radius: 20px;
+  width: 550px;
+  padding-bottom: 35px;
+  padding-top: 0px;
+  text-align: center;
+  box-shadow: 0 0 20px #ffcc00, 0 0 40px #ff9900;
+  position: relative;
+  background-size: 200% 200%;
+  animation: shimmer 12s linear infinite;
+}
+
+@keyframes glowBox {
+  from {
+    box-shadow: 0 0 10px #00ff88, 0 0 20px #ffd700;
+  }
+  to {
+    box-shadow: 0 0 20px #00ff88, 0 0 40px #ffd700;
+  }
+}
+
+.prompt-text {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 2.3rem;
+  font-weight: 900;
+  color: #073a11;
+  text-shadow: 0 0 5px #fff, 0 0 10px #800000;
+  letter-spacing: 2px;
+  margin: 0 auto 15px auto;
+  text-align: center;
+  max-width: 525px;
+}
+
+.prompt-sub-text {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: #073a11;
+  text-shadow: 0 0 5px #fff, 0 0 10px #800000;
+  letter-spacing: 2px;
+  margin: 0 auto 15px auto;
+  text-align: center;
+  max-width: 525px;
+}
+
+input[type="text"], select {
+  color: #000; 
+  -webkit-text-fill-color: #000; /* fixes Safari autofill blue text */
+  -webkit-box-shadow: 0 0 0px 1000px white inset; /* removes blue glow */
+  box-shadow: none; /* remove default inner shadows */
+  background-color: white; /* ensure background doesn't get weird autofill styles */
+}
+
+select:focus,
+input:focus {
+  outline: none; /* removes the blue outline */
+  box-shadow: none; /* also removes inset shadows Safari might add */
+  border: 2px solid #800000; /* optional: add your own focus border */
+}
+
+select {
+  padding: 10px;
+  border-radius: 10px;
+  border: 2px solid #800000;
+  width: 84%;
+  font-size: 1rem;
+  margin-bottom: 15px;
+  box-shadow: inset 0 0 5px #800000;
+  font-family: 'Crimson Text', serif;
+  background-color: #fffbe6;
+}
+
+button {
+  font-family: 'Cinzel Decorative', serif;
+  font-weight: 900; /* or 600 / 700 */
+  background-color: gold;
+  color: #2b420c;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-size: 1.2rem;
+  font-weight: 900;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 5px #fff, 0 0 10px #ffef84;
+}
+
+button:hover {
+  background-color: #fff275;
+  transform: scale(1.05);
+  box-shadow: 0 0 10px #fff, 0 0 20px #ffd700;
+}
+
+.witch-hat {
+  width: 80px;
+  height: auto;
+  display: block;
+  margin: 0 auto ; /* center it and add spacing below */
+}
+
+.broomstick {
+  position: absolute;
+  top: 4%;
+  left: -200px; /* Start off-screen to the left */
+  width: 150px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+    z-index: 9999;
+}
+
+.broomstick.fly {
+  animation: flyBroom 4s linear forwards;
+  opacity: 1;
+}
+
+@keyframes flyBroom {
+  0% {
+    left: -200px;
+    transform: rotate(-10deg);
+  }
+  50% {
+    transform: translateY(-40px) rotate(0deg);
+  }
+  100% {
+    left: 100vw;
+    transform: rotate(10deg);
+  }
+}
+
+.support-me {
+  position: fixed;
+  bottom: 10px;
+  left: 10px;
+  width: 22vw;
+  max-width: 240px;
+  min-width: 120px;
+}
+
+.support-me img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+}
+
+@media (max-width: 768px) {
+  .support-me {
+    position: relative;
+    bottom: auto;
+    left: auto;
+    margin: 20px auto 0 auto;
+    display: block;
+    width: 60%;
+    text-align: center;
+  }
+}
