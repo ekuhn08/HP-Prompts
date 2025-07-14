@@ -188,6 +188,7 @@ button:hover {
   height: auto;
   display: block;
   border-radius: 8px;
+   z-index: 999;
 }
 
 @media (max-width: 768px) {
@@ -215,6 +216,7 @@ button:hover {
   justify-content: center;
   align-items: center;
   animation: shimmer 2s linear infinite;
+  z-index: 10000;
 }
 
 /* ========== MODAL CONTENT BOX ========== */
