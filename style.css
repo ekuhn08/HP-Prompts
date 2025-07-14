@@ -201,3 +201,60 @@ button:hover {
     text-align: center;
   }
 }
+
+/* ========== MODAL OVERLAY ========== */
+.modal-overlay {
+  display: none; /* Hidden by default */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.8); /* dark transparent background */
+  z-index: 9999;
+  justify-content: center;
+  align-items: center;
+  animation: shimmer 2s linear infinite;
+}
+
+/* ========== MODAL CONTENT BOX ========== */
+.modal-content {
+  background: linear-gradient(to bottom right, #7f0909 10%, #7f0909 20%, #ffcc00 100%);
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 0 20px gold;
+  text-align: center;
+  font-family: 'Cinzel Decorative', serif;
+  width: 90%;
+  max-width: 400px;
+}
+
+/* ========== INPUT FIELD INSIDE MODAL ========== */
+.modal-content input[type="number"] {
+  padding: 10px;
+  width: 80%;
+  font-size: 1rem;
+  border: 2px solid #800000;
+  border-radius: 10px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+/* ========== BUTTON INSIDE MODAL ========== */
+.modal-content button {
+  font-family: 'Cinzel Decorative', serif;
+  font-weight: 900;
+  background-color: gold;
+  color: #2b420c;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.modal-content button:hover {
+  background-color: #fff275;
+  transform: scale(1.05);
+}

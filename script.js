@@ -1,35 +1,46 @@
+// Wait for the whole DOM to be ready before running this logic
+window.addEventListener("DOMContentLoaded", () => {
+  // Get references to modal elements
+  const modal = document.getElementById("guessModal");
+  const submitBtn = document.getElementById("submitGuess");
+  const guessInput = document.getElementById("guessInput");
 
+  // Generate a random number between 1 and 5
+  const targetNum = Math.floor(Math.random() * 5) + 1;
+  console.log("Target number:", targetNum); // For debugging
 
-  // Wait for the entire page to load before running the number guessing game
-  window.addEventListener("load", function () {
-    setTimeout(function () {
-      // Set a fixed target number between 1 and 5
-      const targetNum = Math.floor(Math.random() * 5) + 1;
-      console.log("Target number:", targetNum); // Just for debugging in console
+  // Show the modal overlay so the user can make a guess
+  modal.style.display = "flex";
 
-      // Ask the user to guess a number
-      let guess = parseInt(prompt("Hello Wizard! To enter Numerology class, prove your psychic powers by guessing the correct number between 1 and 5."));
+  // When the user clicks the submit button...
+  submitBtn.addEventListener("click", () => {
+    // Get the number they entered and convert to an integer
+    let guess = parseInt(guessInput.value);
 
-      // Gets mad and corrects a user if they enter a letter
-      while (!guess) {
-  guess = parseInt(prompt("Wrong! Come on Muggle, you can only input numbers. Guess a number betweeen 1 and 5."));
-}
-      // Keep asking until the user guesses the correct number
-      while (guess !== targetNum) {
-        if (guess > targetNum) {
-          guess = parseInt(prompt("Too high, Muggle! Enter a new number between 1 and 5:"));
-        } else {
-          guess = parseInt(prompt("Too low! Try again between 1 aoo low, Mud Blood! Enter a new number between 1 and 5:"));
-        }
-      }
+    // If the input is not a number, show an error and return
+    if (!guess) {
+      alert("Wrong! Come on Muggle, you can only input numbers. Guess a number betweeen 1 and 5.");
+      return;
+    }
 
-      // Show success message and trigger broomstick animation
-      alert("Great job, wise Wizard! You may now enter the Numerology classroom! 🪄");
-      document.getElementById("broomstick").classList.add("fly");
-    }, 300); // Delay to let the page render first
+    // If they guess correctly, show success message and trigger animation
+    if (guess === targetNum) {
+      alert("Great job, wise Wizard! You may now enter the Numerology classroom!");
+      modal.style.display = "none"; // Hide the modal
+      document.getElementById("broomstick").classList.add("fly"); // Start broom animation
+    } 
+    // If the guess is too high
+    else if (guess > targetNum) {
+      alert("Too high, Muggle! Enter a new number between 1 and 5:");
+    } 
+    // If the guess is too low
+    else {
+      alert("Too low, Mud Blood! Enter a new number between 1 and 5:");
+    }
   });
+});
 
-   // Function to check the user's input against the correct house name
+// Function to check the user's input against the correct house name
   function checkInput() {
     const input = document.getElementById("userInput").value.trim();
     if (input === "Gryffindor") {
